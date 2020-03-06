@@ -9,7 +9,7 @@
 #   }
 #
 class profile::boltworkshop::users (
-  Integer $number = '15',
+  Integer $number = 15,
 ){
   case $facts['kernel'] {
     'Linux': {
