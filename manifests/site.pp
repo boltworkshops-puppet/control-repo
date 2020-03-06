@@ -25,7 +25,9 @@ File { backup => false }
 #
 # For more on node definitions, see: https://puppet.com/docs/puppet/latest/lang_node_definitions.html
 node default {
-  # This is where you can declare classes for all nodes.
-  # Example:
-  #   class { 'my_class': }
+  if $trusted['extensions']['pp_role'] {
+    include $trusted['extensions']['pp_role']
+  } else {
+    notify { 'No such role': }
+  }
 }
