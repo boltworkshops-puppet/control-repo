@@ -1,4 +1,9 @@
 ---
+lookup_options:
+  '^profile::.+::password+$':
+    convert_to: 'Sensitive'
+  '^profile::.+::gitremote+$':
+    convert_to: 'Sensitive'
 sudo::configs:
   students:
     content: '%students ALL=(ALL) NOPASSWD:ALL'
