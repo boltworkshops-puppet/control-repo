@@ -1,0 +1,10 @@
+---
+profile::base::packages:
+  tree:
+    ensure: 'installed'
+  wget:
+    ensure: 'installed'
+  git:
+    ensure: 'installed'
+  nano:
+    ensure: 'installed'
