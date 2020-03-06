@@ -83,3 +83,4 @@ class profile::boltworkshop::users (
     }
     default: {}
   }
+}
