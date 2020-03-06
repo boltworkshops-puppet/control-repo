@@ -1,12 +1,20 @@
 ---
 version: 5
-
 defaults:
-  datadir: "data"
+  datadir: data
 
 hierarchy:
-  - name: "Yaml backend"
-    data_hash: yaml_data
+  - name: "Hiera eyaml data"
+    lookup_key: eyaml_lookup_key
     paths:
-      - "nodes/%{trusted.certname}.yaml"
+      - "nooverride.yaml"
+      - "node/%{::fqdn}.yaml"
+      - "os/%{::kernel}.yaml"
+      - "os/%{::os.name}-%{::os.release.major}.yaml"
+      - "os/%{::os.family}.yaml"
+      - "role/%{::trusted.extensions.pp_role}.yaml"
+      - "location/%{::trusted.extensions.pp_datacenter}.yaml"
       - "common.yaml"
+    options:
+      pkcs7_private_key: /etc/puppetlabs/secure/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/secure/keys/public_key.pkcs7.pem
