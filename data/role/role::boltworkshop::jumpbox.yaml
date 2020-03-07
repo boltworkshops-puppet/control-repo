@@ -4,6 +4,8 @@ lookup_options:
     convert_to: 'Sensitive'
   '^profile::.+::gitremote+$':
     convert_to: 'Sensitive'
+yum::managed_repos:
+  - 'puppet-tools'
 yum::repos:
   puppet-tools:
     ensure: 'present'
@@ -16,3 +18,6 @@ sudo::configs:
     content: '%students ALL=(ALL) NOPASSWD:ALL'
 profile::boltworkshop::users::gitremote: ENC[PKCS7,MIIBygYJKoZIhvcNAQcDoIIBuzCCAbcCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAddsWlIKqdN2VvjKaINXV6XzMHEGIKU6gKy5jXX8Q5oMqQbEkeHGBCKp7XSeestgLCr7vNfVjFQEkx2AIfPg17LyaCvLbEGcq9NfHRVOWXqiRTzo6F0U9Wo9E70eRKVNmTUP2AuR/GfkqtdqaUX4eTtEsrBMUXcFuPXbt99IRl1bxhGgtruboeNnw2NoUyzpCc6ViZv40Kyb2LDJPeB2RFc7Cla+5FoI8GGCG2lOOjeYOz+OXqz2Aa07Vcr6QOJpBDwR3uM5FrcN+lp+CB6kKnlCXs+aVWfE17hYhZSH4NPnW0ySy9X3UiOZ6eNIy2c2bxpPbQ+PExT6MJv1SxhkSnzCBjAYJKoZIhvcNAQcBMB0GCWCGSAFlAwQBKgQQ4+heNOHMDncW6b3JWFp3M4BgFITxc5X9ALuLs6bJgOeKOrqqtEYcav1+5VVnIp+Ly3BKPsfT1EkxPUWVw+5Nv+JJnlpnAMimj01nV6r3aUMQGlQwySCL2y3VGM046A4LmnkO9pYxIRQ7x3sf34IiDCE3]
 profile::boltworkshop::users::password: ENC[PKCS7,MIIB2gYJKoZIhvcNAQcDoIIByzCCAccCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAlk4WCZlReNVlqPxL+TNsWkBLzYu0JHZzb9SMgfoA1M3We5A96XRDi2TGGMQsA37sQjEWuRRgSw378Oqfo6ihksV80fSdhlGo9AeNJhYM4jxcT7D7HW8/ujHSsvPUZZxZmXsdYH/HDuEwFk+VvBrhc6cMPMz+CUhSSUPn9Qr6dTmjzGGMXLkvLtDydKnjZCC0zpcbPdj4RSPDHsmSD/Y+epXuCggr+qmnXijiZFgt9JD2dUBRe3X1xILOEtF907/WG+jCYz7mPrxFdvwliE4AvmnITiRvaSA9LXlqi1KkhiC29htW07gnYFnwn27aOTxIxbaLy3NoNwh1mgBx1mWdZDCBnAYJKoZIhvcNAQcBMB0GCWCGSAFlAwQBKgQQhXmjqm7IOZ1QffiwtHD4HoBwLnKBMh2NVb7HtNc09uiBF3zYo6Jmar2N1j+ziZXrUBiPAvF9RDbq0146lM2q0GkQDDXsnquRPHe/odALjM22fIBnDMvvIx0v2W1Fs11LnDscTUwU6hTNJJtEU3jXDVP1hHIW1kiPZC7nhZx4iLaifA==]
+profile::base::packages:
+  puppet-bolt:
+    ensure: 'installed'
