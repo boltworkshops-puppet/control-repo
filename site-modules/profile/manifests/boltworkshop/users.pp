@@ -93,10 +93,10 @@ class profile::boltworkshop::users (
           owner   => $id,
           group   => 'students',
           content => epp('profile/boltworkshop/vimrc.epp', {
-            'syntax'   => $syntax,
-            'hlsearch' => $hlsearch,
-            't_Co'     => $t_Co,
-            'line_num' => $line_num,
+            'syntax'   => 'on',
+            'hlsearch' => 'hlsearch',
+            't_Co'     => 't_Co=256',
+            'line_num' => 'number',
           }),
         }
       }
