@@ -13,7 +13,7 @@ class profile::boltworkshop::users (
 ){
   case $facts['kernel'] {
     'Linux': {
-      group { 'students':
+      group { ['pe-puppet', 'students']:
         ensure => present,
       }
 
