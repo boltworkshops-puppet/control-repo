@@ -31,29 +31,32 @@ class profile::boltworkshop::users (
           password => Sensitive($user_pass),
         }
 
-        File {
+        file { "/home/${id}/labfiles":
+          ensure => directory,
           owner  => $id,
           group  => 'students',
           mode   => '0644',
         }
 
-        file { "/home/${id}/labfiles":
-          ensure => directory,
-        }
-
         file { "/home/${id}/.ssh":
           ensure => directory,
           mode   => '0700',
+          owner  => $id,
+          group  => 'students',
         }
 
         file { "/home/${id}/.ssh/config":
           ensure  => file,
+          owner   => $id,
+          group   => 'students',
           mode    => '0600',
           content => "Host *\nStrictHostKeyChecking no\nUserKnownHostFile=/dev/null\n",
         }
 
         file { "/home/${id}/.gitconfig":
           ensure  => file,
+          owner   => $id,
+          group   => 'students',
           mode    => '0600',
           content => "[user]\n\tname = boltworkshops-puppet\n\temail = boltworkshops@puppet.com\n",
         }
@@ -61,12 +64,16 @@ class profile::boltworkshop::users (
         file { "/home/${id}/.nanorc":
           ensure  => file,
           mode    => '0600',
+          owner   => $id,
+          group   => 'students',
           content => "set const\n"
         }
 
         file { "/home/${id}/.vimrc":
           ensure  => file,
           mode    => '0600',
+          owner   => $id,
+          group   => 'students',
           content => "set number\n",
         }
 
