@@ -1,0 +1,8 @@
+---
+yum::repos:
+  puppet-tools:
+    ensure: 'present'
+    enabled: true
+    descr: 'Puppet Tools Repository $basearch'
+    baseurl: 'http://yum.puppet.com/puppet-tools/el/7/$basearch'
+    gpgcheck: false
