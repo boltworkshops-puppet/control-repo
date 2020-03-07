@@ -24,11 +24,12 @@ class profile::boltworkshop::users (
       $users.each | Integer $user_number | {
         $id = "student${user_number}"
         user { $id:
-          ensure   => present,
-          gid      => 'students',
-          home     => "/home/${id}",
-          shell    => '/bin/bash',
-          password => Sensitive($user_pass),
+          ensure     => present,
+          gid        => 'students',
+          home       => "/home/${id}",
+          shell      => '/bin/bash',
+          managehome => true,
+          password   => Sensitive($user_pass),
         }
 
         file { "/home/${id}/labfiles":
@@ -84,6 +85,7 @@ class profile::boltworkshop::users (
           provider => git,
           source   => Sensitive($gitremote),
           revision => 'master',
+          require  => Package['git'],
         }
 
       }
