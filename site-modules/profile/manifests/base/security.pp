@@ -4,9 +4,13 @@
 #   include profile::base::security
 #
 class profile::base::security {
-  class { 'selinux':
-    mode => 'disabled',
-  }
 
-
+  case $facts['kernel'] {
+    'Linux': {
+      include profile::base::sudo
+      class { 'selinux':
+        mode => 'disabled',
+      }
+    }
+    default: {}
 }
