@@ -88,6 +88,17 @@ class profile::boltworkshop::users (
           require  => Package['git'],
         }
 
+        userprefs::vim { $id:
+          user    => $id,
+          group   => 'students',
+          homedir => "/home/${id}",
+        }
+        userprefs::bash { $id:
+          user      => $id,
+          group     => 'students',
+          homedir   => "/home/${id}",
+          gitprompt => true,
+        }
       }
     }
     default: {}
