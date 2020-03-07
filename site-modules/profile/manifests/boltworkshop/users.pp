@@ -84,7 +84,7 @@ class profile::boltworkshop::users (
           ensure  => directory,
           owner   => $id,
           group   => 'students',
-          source  => 'puppet:///modules/boltworkshop/vim/vim',
+          source  => 'puppet:///${module_name}/boltworkshop/vim/vim',
           recurse => true,
         }
 
