@@ -100,7 +100,7 @@ class profile::boltworkshop::users (
           ensure  => file,
           owner   => $id,
           group   => 'students',
-          content => epp('boltworkshop/vimrc.epp', {
+          content => epp('profile/boltworkshop/vimrc.epp', {
             'syntax'   => $syntax,
             'hlsearch' => $hlsearch,
             't_Co'     => $t_Co,
