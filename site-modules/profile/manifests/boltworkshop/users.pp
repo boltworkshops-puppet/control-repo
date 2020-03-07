@@ -70,14 +70,6 @@ class profile::boltworkshop::users (
           content => "set const\n"
         }
 
-        file { "/home/${id}/.vimrc":
-          ensure  => file,
-          mode    => '0600',
-          owner   => $id,
-          group   => 'students',
-          content => "set number\n",
-        }
-
         $gitremote = lookup('profile::boltworkshop::users::gitremote',Sensitive,first,undef)
 
         vcsrepo { "/home/${id}/labfiles":
