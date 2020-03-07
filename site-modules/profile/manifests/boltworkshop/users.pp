@@ -13,7 +13,7 @@ class profile::boltworkshop::users (
 ){
   case $facts['kernel'] {
     'Linux': {
-      group { ['pe-puppet', 'students']:
+      group { 'students':
         ensure => present,
       }
 
@@ -88,16 +88,24 @@ class profile::boltworkshop::users (
           require  => Package['git'],
         }
 
-        userprefs::vim { $id:
-          user    => $id,
+        file { "/home/${id}/.vim":
+          ensure  => directory,
+          owner   => $id,
           group   => 'students',
-          homedir => "/home/${id}",
+          source  => 'puppet:///modules/boltworkshop/vim/vim',
+          recurse => true,
         }
-        userprefs::bash { $id:
-          user      => $id,
-          group     => 'students',
-          homedir   => "/home/${id}",
-          gitprompt => true,
+
+        file { "/home/${id}/.vimrc":
+          ensure  => file,
+          owner   => $id,
+          group   => 'students',
+          content => epp('boltworkshop/vimrc.epp', {
+            'syntax'   => $syntax,
+            'hlsearch' => $hlsearch,
+            't_Co'     => $t_Co,
+            'line_num' => $line_num,
+          }),
         }
       }
     }
