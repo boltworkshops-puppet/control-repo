@@ -21,7 +21,7 @@ class profile::boltworkshop::users (
 
       $users = range('0', $number)
 
-      $users.each | $user_number | {
+      $users.each | Integer $user_number | {
         $id = "student${user_number}"
         user { $id:
           ensure   => present,
@@ -64,7 +64,7 @@ class profile::boltworkshop::users (
           content => "set const\n"
         }
 
-        file { "/home/${id}/.gitconfig":
+        file { "/home/${id}/.vimrc":
           ensure  => file,
           mode    => '0600',
           content => "set number\n",
