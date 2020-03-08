@@ -1,0 +1,14 @@
+---
+puppet_enterprise::profile::agent::package_inventory_enabled: true
+puppet_enterprise::console_services::enable_gc_logging: false
+puppet_enterprise::master::puppetserver::enable_gc_logging: false
+puppet_enterprise::profile::orchestrator::enable_gc_logging: false
+puppet_enterprise::puppetdb::enable_gc_logging: false
+puppet_enterprise::profile::amq::broker::enable_gc_logging: false
+puppet_enterprise::params::activemq_heap_mb: 512
+puppet_enterprise::profile::console::rbac_session_timeout: 4320
+puppet_enterprise::profile::console::display_local_time: true
+puppet_enterprise::master::code_manager::post_environment_hooks:
+  - url: 'https://%{::puppet_master_server}:4433/classifier-api/v1/update-classes'
+    use-client-ssl: true
+puppet_enterprise::master::code_manager::invalid_branches: 'correct'
