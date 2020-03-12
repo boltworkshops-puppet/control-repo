@@ -23,6 +23,8 @@ class profile::boltworkshop::users (
 
       $user_pass = lookup('profile::boltworkshop::users::password',Sensitive,first,undef)
 
+      windows_env { 'PATH=C:/Program Files/git/': }
+
       $users.each | Integer $user_number | {
         $id = "student${user_number}"
         user { $id:
@@ -37,8 +39,6 @@ class profile::boltworkshop::users (
           owner  => $id,
           group  => 'students',
         }
-
-        windows_env { 'PATH=C:/Program Files/git/': }
 
         vcsrepo { "C:/Users/${id}/labfiles":
           ensure   => present,
