@@ -23,7 +23,7 @@ class profile::boltworkshop::users (
 
       $user_pass = lookup('profile::boltworkshop::users::password',Sensitive,first,undef)
 
-      windows_env { 'PATH=C:/Program Files/git/': }
+      windows_env { 'PATH=C:\\Program Files\\git\\': }
 
       $users.each | Integer $user_number | {
         $id = "student${user_number}"
