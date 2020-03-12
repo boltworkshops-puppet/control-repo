@@ -1,4 +1,1 @@
 ---
-profile::base::packages:
-  vscode:
-    ensure: 'installed'
