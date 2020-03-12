@@ -25,12 +25,12 @@ class profile::base::additional_packages (
       /\d.*/: {
         profile::base::pinned_package { $package:
           version => $options['ensure'],
-          require => Class['profile::base::repos'],
         }
       }
       default: {
         package { $package:
-          * => $options,
+          *       => $options,
+          require => Class['profile::base::repos'],
         }
       }
     }
