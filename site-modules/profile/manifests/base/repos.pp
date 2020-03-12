@@ -21,6 +21,10 @@ class profile::base::repos {
       }
     }
     'Windows': {
+      package { 'ruby-pwsh':
+        ensure   => installed,
+        provider => 'puppet_gem',
+      }
       Package { provider => chocolatey, }
       class { 'chocolatey':
         choco_install_location => 'C:\ProgramData\chocolatey',
