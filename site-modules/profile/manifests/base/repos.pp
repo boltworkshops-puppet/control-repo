@@ -20,6 +20,12 @@ class profile::base::repos {
         refreshonly => true,
       }
     }
+    'Windows': {
+      Package { provider => chocolatey, }
+      class { 'chocolatey':
+        choco_install_location => 'C:\ProgramData\chocolatey',
+      }
+    }
     default: {}
   }
 }

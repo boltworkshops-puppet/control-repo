@@ -6,4 +6,7 @@ mod 'puppet-selinux', '3.1.0'
 mod 'puppet-yum', '4.1.0'
 mod 'pltraining-userprefs', '1.0.19'
 mod 'saz-sudo', '6.0.0'
+mod 'puppetlabs-powershell', '3.0.1'
+mod 'puppetlabs-registry', '3.1.0'
+mod 'puppetlabs-chocolatey', '5.0.2'
 
