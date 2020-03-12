@@ -17,7 +17,7 @@ class profile::boltworkshop::users (
         ensure => present,
       }
 
-      $user_pass = pwhash(lookup('profile::boltworkshop::users::password',Sensitive,first,undef),6)
+      $user_pass = pw_hash(lookup('profile::boltworkshop::users::password',Sensitive,first,undef),6)
 
       $users = range('0', $number)
 
