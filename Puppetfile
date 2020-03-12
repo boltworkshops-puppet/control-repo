@@ -9,4 +9,5 @@ mod 'saz-sudo', '6.0.0'
 mod 'puppetlabs-powershell', '2.3.0'
 mod 'puppetlabs-registry', '3.1.0'
 mod 'puppetlabs-chocolatey', '5.0.2'
+mod 'puppet-windows_env', '3.2.0'
 
