@@ -24,6 +24,11 @@ File { backup => false }
 # Puppet Enterprise console and External Node Classifiers (ENC's).
 #
 # For more on node definitions, see: https://puppet.com/docs/puppet/latest/lang_node_definitions.html
+case $operatingsystem {
+  'windows': {
+    Package { provider => chocolatey, }
+  }
+}
 node default {
   if $trusted['extensions']['pp_role'] {
     include $trusted['extensions']['pp_role']
