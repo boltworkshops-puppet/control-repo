@@ -1,1 +1,6 @@
 ---
+profile::base::packages:
+  vscode:
+    ensure: 'installed'
+  git:
+    ensure: 'installed'

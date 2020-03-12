@@ -51,14 +51,14 @@ class profile::boltworkshop::users (
 
       }
 
-      class { 'vscode':
-        package_ensure => 'present',
-      }
+      #class { 'vscode':
+      #  package_ensure => 'present',
+      #}
 
-      vscode_extension { 'jpogran.puppet':
-        ensure  => 'present',
-        require => Class['vscode'],
-      }
+      #vscode_extension { 'jpogran.puppet':
+      #  ensure  => 'present',
+      #  require => Class['vscode'],
+      #}
     }
     'Linux': {
       group { 'students':
