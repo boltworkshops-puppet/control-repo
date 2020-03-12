@@ -37,12 +37,15 @@ class profile::boltworkshop::users (
           owner  => $id,
           group  => 'students',
         }
+
+        windows_env { 'PATH=C:/Program Files/git/': }
+
         vcsrepo { "C:/Users/${id}/labfiles":
           ensure   => present,
           provider => git,
           source   => Sensitive($gitremote),
           revision => 'master',
-          require  => Package['git'],
+          require  => [Package['git']],
         }
 
       }
