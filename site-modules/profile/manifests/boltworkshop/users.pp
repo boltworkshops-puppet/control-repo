@@ -45,7 +45,7 @@ class profile::boltworkshop::users (
           provider => git,
           source   => Sensitive($gitremote),
           revision => 'master',
-          require  => [Package['git']],
+          require  => [Package['git'],Windows_env['PATH=C:\\Program Files\\git\\']],
         }
 
       }
