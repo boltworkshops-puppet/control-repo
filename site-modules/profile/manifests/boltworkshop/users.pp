@@ -34,6 +34,7 @@ class profile::boltworkshop::users (
           managehome => true,
           password   => Sensitive($user_pass),
         }
+
         file { "C:/Users/${id}/labfiles":
           ensure => directory,
           owner  => $id,
