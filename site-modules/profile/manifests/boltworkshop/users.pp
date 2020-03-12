@@ -28,11 +28,23 @@ class profile::boltworkshop::users (
         user { $id:
           ensure     => present,
           groups     => ['students'],
-          home       => "/home/${id}",
-          shell      => '/bin/bash',
+          home       => "C:\Users\${id}",
           managehome => true,
           password   => Sensitive($user_pass),
         }
+        file { "C:\Users\${id}\labfiles":
+          ensure => directory,
+          owner  => $id,
+          group  => 'students',
+        }
+        vcsrepo { "C:\Users\${id}\labfiles":
+          ensure   => present,
+          provider => git,
+          source   => Sensitive($gitremote),
+          revision => 'master',
+          require  => Package['git'],
+        }
+
       }
     }
     'Linux': {

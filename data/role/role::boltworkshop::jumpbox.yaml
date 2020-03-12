@@ -21,3 +21,5 @@ profile::boltworkshop::users::password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAW
 profile::base::packages:
   puppet-bolt:
     ensure: 'installed'
+  git:
+    ensure: 'installed'
