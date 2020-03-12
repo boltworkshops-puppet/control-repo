@@ -11,7 +11,30 @@
 class profile::boltworkshop::users (
   String $number = $facts['students'],
 ){
+
+  $users = range('0', $number)
+  $gitremote = lookup('profile::boltworkshop::users::gitremote',Sensitive,first,undef)
+
   case $facts['kernel'] {
+    'Windows': {
+      group { 'students':
+        ensure => present,
+      }
+
+      $user_pass = lookup('profile::boltworkshop::users::password',Sensitive,first,undef)
+
+      $users.each | Integer $user_number | {
+        $id = "student${user_number}"
+        user { $id:
+          ensure     => present,
+          groups     => ['students'],
+          home       => "/home/${id}",
+          shell      => '/bin/bash',
+          managehome => true,
+          password   => Sensitive($user_pass),
+        }
+      }
+    }
     'Linux': {
       group { 'students':
         ensure => present,
@@ -19,7 +42,6 @@ class profile::boltworkshop::users (
 
       $user_pass = pw_hash(lookup('profile::boltworkshop::users::password',Sensitive,first,undef),'SHA-512',String(fqdn_rand(60)))
 
-      $users = range('0', $number)
 
       $users.each | Integer $user_number | {
         $id = "student${user_number}"
@@ -69,8 +91,6 @@ class profile::boltworkshop::users (
           group   => 'students',
           content => "set const\n"
         }
-
-        $gitremote = lookup('profile::boltworkshop::users::gitremote',Sensitive,first,undef)
 
         vcsrepo { "/home/${id}/labfiles":
           ensure   => present,
